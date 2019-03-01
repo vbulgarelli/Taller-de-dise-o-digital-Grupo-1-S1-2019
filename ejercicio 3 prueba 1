@@ -1,0 +1,153 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 28.02.2019 17:53:56
+// Design Name: 
+// Module Name: pruebaver
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module pruebaver(
+    input clock_100MHz,
+    input reset,
+    output reg [7:0] activar_anodo,
+    output reg [6:0] led_disp,
+    );
+    
+    reg [255:0] numero;
+    reg [3:0] led;
+    reg [26:0] unsegundo;
+    reg [12:0] refresh;
+    wire [3:0] activarleddisp;
+    wire enable;
+    
+    always @(posedge clock_100Mhz or posedge reset)
+    begin
+        if (reset == 1)
+            unsegundo <= 0;
+        else begin
+            if (unsegundo >= 99999999)
+                unsegundo <= 0;
+            else 
+                unsegundo <= unsegundo + 1;
+        end
+    end
+    
+    assign enable = (unsegundo = 99999999)?1:0;
+    always @(posedge clock_100Mhz or posedge reset)
+    begin
+        if (reset == 1)
+            numero <= 0;
+        else
+            numero <= numero +1;
+    end
+    always @(posedge clock_100Mhz or posedge reset)
+    begin
+        if (reset = 1)
+            refresh <= 0;
+        else
+            refresh <= refresh + 1;
+    end
+    assign activarleddisp = refresh [12:11:10:9];
+    
+    //de aqui en adelante se controla el display con 4 bits
+    always @(*)
+    begin 
+        case(activarleddisp)
+        4´b0000: begin
+            activar_anodo = 8´b0111111;
+            led = numero/10000000;
+            end
+        4´b0001: begin
+            activar_anodo = 8´b10111111;
+            led = (numero%10000000)/1000000;
+            end
+        4´b0010: begin
+            acivar_anodo = 8´b11011111;
+            led = ((numero%10000000)%1000000)/100000;
+            end
+        4´b0011: begin
+            activar_anodo = 8´b11101111;
+            led = (((numero%10000000)%1000000)%100000)/10000;
+            end
+        4´b0100: begin
+            activar_anodo = 8´b11110111;
+            led = ((((numero%10000000)%1000000)%100000)%10000)/1000;
+            end
+        4´b0101: begin
+            activar_anodo = 8´b11111011;
+            led = (((((numero%10000000)%1000000)%100000)%10000)%1000)/100;
+            end
+        4´b0110: begin
+            actiar_anodo = 8´b11111101;
+            led = ((((((numero%10000000)%1000000)%100000)%10000)%1000)%100)/10;
+            end
+        4´b0111: begin
+            activar_anodo = 8´b11111110;
+            led = ((((((numero%10000000)%1000000)%100000)%10000)%1000)%100)/10;
+            end //kkk
+        4´b1000: begin
+            activar_anodo = 8´b0111111;
+            led = numero/10000000;
+            end
+        4´b1001: begin
+            activar_anodo = 8´b10111111;
+            led = (numero%10000000)/1000000;
+            end
+        4´b1010: begin
+            acivar_anodo = 8´b11011111;
+            led = ((numero%10000000)%1000000)/100000;
+            end
+        4´b1011: begin
+            activar_anodo = 8´b11101111;
+            led = (((numero%10000000)%1000000)%100000)/10000;
+            end
+        4´b1100: begin
+            activar_anodo = 8´b11110111;
+            led = ((((numero%10000000)%1000000)%100000)%10000)/1000;
+            end
+        4´b1101: begin
+            activar_anodo = 8´b11111011;
+            led = (((((numero%10000000)%1000000)%100000)%10000)%1000)/100;
+            end
+        4´b1110: begin
+            actiar_anodo = 8´b11111101;
+            led = ((((((numero%10000000)%1000000)%100000)%10000)%1000)%100)/10;
+            end
+        4´b1111: begin
+            activar_anodo = 8´b11111110;
+            led = ((((((numero%10000000)%1000000)%100000)%10000)%1000)%100)/10;
+            end
+        endcase
+    end
+    
+    always @(*)
+        begin
+            case(led)
+            4´b0000: led_disp = 7´b0000001;
+            4´b0001: led_disp = 7´b1001111;
+            4´b0010: led_disp = 7´b0010010;
+            4´b0011: led_disp = 7´b0000110;
+            4´b0100: led_disp = 7´b1001100;
+            4´b0101: led_disp = 7´b0100100;
+            4´b0110: led_disp = 7´b0100000;
+            4´b0111: led_disp = 7´b0001111;
+            4´b1000: led_disp = 7´b0000001;
+            4´b1001: led_disp = 7´b0000100;
+            default: led_disp = 7´b0000001;
+        endcase
+    end
+endmodule
