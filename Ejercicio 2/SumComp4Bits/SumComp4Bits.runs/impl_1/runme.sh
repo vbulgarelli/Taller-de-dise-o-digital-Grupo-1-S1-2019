@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/Daniel/Desktop/SumComp4Bits/SumComp4Bits.runs/impl_1'
+HD_PWD='C:/Users/Daniel/Documents/GitHub/Taller-de-dise-o-digital-Grupo-1-S1-2019/Ejercicio 2/SumComp4Bits/SumComp4Bits.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
