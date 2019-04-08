@@ -21,17 +21,17 @@
 
 
 module muxsalida(
-A, B, flagin, select, out, overflow, negado, carryo, zero
+A, B, flagin, select, result, overflow, negativo, cout, zero
     );
     
 input A;
 input B;
 input flagin;
 input select;
-output out;
+output result;
 output overflow;
-output negado;
-output carryo;
+output negativo;
+output cout;
 output zero;
 
     
@@ -41,10 +41,10 @@ always@(*)
     begin
     if(select==0)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -53,10 +53,10 @@ always@(*)
     
     if(select==1)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -65,10 +65,10 @@ always@(*)
    
     if(select==2)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -77,10 +77,10 @@ always@(*)
     
     if(select==3)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -89,10 +89,10 @@ always@(*)
     
     if(select==4)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -101,10 +101,10 @@ always@(*)
     
     if(select==5)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -113,10 +113,10 @@ always@(*)
     
     if(select==6)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -125,10 +125,10 @@ always@(*)
     
     if(select==7)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -137,10 +137,10 @@ always@(*)
     
     if(select==8)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -149,10 +149,10 @@ always@(*)
     
     if(select==9)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -161,10 +161,10 @@ always@(*)
     
     if(select==10)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -173,10 +173,10 @@ always@(*)
     
     if(select==11)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -185,10 +185,10 @@ always@(*)
     
     if(select==12)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -197,10 +197,10 @@ always@(*)
     
     if(select==13)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end
@@ -209,10 +209,10 @@ always@(*)
     
     if(select==14)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
       end
@@ -221,10 +221,10 @@ always@(*)
     
     if(select==15)
       begin
-        assign out = outsum;  
+        assign result = outsum;  
         assign overflow = outovfl;
-        assign carryo = outcarry;
-        assign negado = outneg;
+        assign cout = outcarry;
+        assign negativo = outneg;
         assign zero = outz;
     
     end

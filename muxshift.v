@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 08.04.2019 16:10:45
+// Create Date: 08.04.2019 16:13:20
 // Design Name: 
-// Module Name: muxflagin1
+// Module Name: muxshift
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,19 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module muxflagin1(
-    input A, B, flag,
-    output num
+module muxshift(
+input data1, data2, lr ,
+output shiftdata
     );
-    wire nflag;
-    wire a0, a1, a2;
 
-    assign nflag = ~flag;
-
-    and u0(a0, A, flag);
-    and u1(a1, B, nflag);
-    or u3(a2, a0, a1);
-
-    assign num = a2;
+   assign shiftdata = data1&lr|data2&~lr;
 
 endmodule

@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 14.03.2019 17:03:47
+// Create Date: 08.04.2019 16:11:44
 // Design Name: 
 // Module Name: sumador
 // Project Name: 
@@ -20,34 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sumador(
-    input A, B, Ci, select,
-    output O, Co
-    );
- 
-reg outpu; 
-  
-//reg a0, a1, a2;
+module sumador(A, B, Ci,O, Co);
 
-always@(*)
- begin
- if (select==0)
-//    xor u0(a0,A,B);
-    
-//    and u1(a1,A,B);
-    
-//    and u2(a2,a0,Ci);
-    
-//    or u3(Co, a1, a2);
-    
-//    xor u4 (O, a0, Ci);
-    
-    outpu <= A+B;   
-     
-else;
+input A,B,Ci;
+output O,Co;
 
-end    
-
-assign O = outpu;
+assign O = A^B^Ci;
+assign Co = (B&Ci)|(A&B)|(A&Ci);
 
 endmodule
