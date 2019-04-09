@@ -22,20 +22,36 @@
 parameter N = 3;
 ////////////////////////
 
+module sumador(A, B, Ci, O, Co);
+input A,B,Ci;
+output O,Co;
+assign O = A^B^Ci;
+assign Co = (B&Ci)|(A&B)|(A&Ci); 
+endmodule
+
 module muxshift(
 input data1, data2, lr ,
 output shiftdata
     );
 
-   assign shiftdata = data1&lr|data2&~lr;
+   assign shiftdata = (data1&lr)|(data2&(~lr));
 
 endmodule
 
-module complementoa1(
+module complementoa2(
     input [N-1:0] num,
     output[N-1:0] aa
     );
-    assign aa = !num;  
+    wire [N-1:0] compa2;
+    wire [N-1:0] carrycomp;
+    assign compa2[0] = 1;
+    genvar j;
+    generate
+    for(j=0;j<N; j=j+1)
+    begin 
+    sumador h(~num[j], compa2[j],carrycomp[j-1],aa[j], carrycomp[j]);
+    end
+    endgenerate  
 endmodule
 
 module muxflagin1(
@@ -44,20 +60,19 @@ module muxflagin1(
     output [N-1:0] num
     );
     wire nflag;
-    wire a0, a1, a2;
+    wire [N-1:0] a0, a1, a2;
     
     assign nflag = ~flag;
-    and u0(a0, A, flag);
-    and u1(a1, B, nflag);
-    or u3(a2, a0, a1);
-    assign num = a2;    
-endmodule
-
-module sumador(A, B, Ci,O, Co);
-input A,B,Ci;
-output O,Co;
-assign O = A^B^Ci;
-assign Co = (B&Ci)|(A&B)|(A&Ci); 
+    genvar j;
+    generate
+    for(j=0;j<N; j=j+1)
+    begin 
+    and u0(a0[j], A[j], flag);
+    and u1(a1[j], B[j], nflag);
+    or u3(a2[j], a0[j], a1[j]);
+    assign num[j] = a2[j]; 
+    end
+    endgenerate   
 endmodule
 
 module ALUU(A, B, flagin, select,
@@ -91,16 +106,17 @@ wire [N-1:0] nres;
 
 wire [N-1:0] carrysum;
 wire [N-1:0] carryres;
+wire [N-1:0] carryinc;
+wire [N-1:0] carrydec;
 wire cosum;
 wire cores;
 wire [N-1:0] comp;
 wire incCo;
 wire decCo;
 
-wire mux1;
-wire [N+1:0]concData;
-wire [N-1:0]shiftedDataR;
-wire [N-1:0]shiftedDataL;
+wire [N-1:0] mux1;
+wire [N+1:0] concData;
+
 
 /////
 
@@ -118,46 +134,66 @@ endgenerate
 
 //Restador
 
-complementoa1 compB(B,comp);
+complementoa2 compB(B,comp);
 
 generate
     for(i=0;i<N; i=i+1)
 begin: resop
-
-assign carryres[-1] = 1; 
 
 sumador g(A[i],comp[i],carryres[i-1],resres[i],carryres[i]);    
 end
 assign cores = carryres[N-1];
 endgenerate
 
-//Incrementa 1
+
+//Incrementa 1//
+assign carryinc[-1] = 1;
 muxflagin1 mux(A,B,flagin,mux1);
-sumador mas1(
-    .A(mux1),
-    .B(1),
-    .Ci(0),
-    .O(incres),
-    .Co(incCo)
+generate
+    for(i=0;i<N; i=i+1)
+    begin
+    sumador mas1(
+    .A(mux1[i]),
+    .B(0),
+    .Ci(carryinc[i-1]),
+    .O(incres[i]),
+    .Co(carryinc[i])
 );
+end
+assign incCo = carryinc[N-1];
+endgenerate
 
-//Decrementa 1
-wire compdec;
-
-complementoa1 dec(1,compdec);
-sumador menos1(
-    .A(mux1),
-    .B(compdec),
-    .Ci(1),
-    .O(decres),
-    .Co(decCo)
-);
+//Decrementa 1//////////////////////////////////////////////
+wire [N-1:0]compdec;
+wire [N-1:0]decval;
+assign decval[0] = 1;
+generate
+for(i=0;i<N; i=i+1)
+    begin
+    complementoa2 dec(decval[i],compdec[i]);
+    sumador menos1(
+    .A(mux1[i]),
+    .B(compdec[i]),
+    .Ci(carrydec[i-1]),
+    .O(decres[i]),
+    .Co(carrydec[i])
+    );
+    end
+    assign decCo = carrydec[N-1];
+endgenerate
 
 //Logicas
 assign orres = A|B;
 assign andres = A&B;
 assign xorres = A^B;
-assign nres = ~B&flagin | ~A&~flagin;
+
+generate
+for(i=0; i<N;i=i+1)
+begin
+assign nres[i] = (~B[i]&flagin) | (~A[i]&~flagin);
+end
+endgenerate
+
 
 //shifts
 assign concData[0] = B[0];
@@ -165,16 +201,16 @@ assign concData[N+1] = B[0];
 assign concData[N:1] = A;
 
 generate
-for(i=1;i<N; i=i+1)
+for(i=1;i<N+1; i=i+1)
 begin
-muxshift right(concData[i+1], concData[i-1], 1, shiftedDataR[i]);
+muxshift right(concData[i+1], concData[i-1], 1, srres[i-1]);
 end
 endgenerate
 
 generate
-for(i=1;i<N; i=i+1)
+for(i=1;i<N+1; i=i+1)
 begin
-muxshift right(concData[i+1], concData[i-1], 0, shiftedDataL[i]);
+muxshift right(concData[i+1], concData[i-1], 0, slres[i-1]);
 end
 endgenerate
 
