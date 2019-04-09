@@ -147,14 +147,17 @@ endgenerate
 
 
 //Incrementa 1//
-assign carryinc[-1] = 1;
+
+wire [N-1:0] incval;
+assign incval[0] = 1;
+
 muxflagin1 mux(A,B,flagin,mux1);
 generate
     for(i=0;i<N; i=i+1)
     begin
     sumador mas1(
     .A(mux1[i]),
-    .B(0),
+    .B(incval[i]),
     .Ci(carryinc[i-1]),
     .O(incres[i]),
     .Co(carryinc[i])
@@ -167,10 +170,12 @@ endgenerate
 wire [N-1:0]compdec;
 wire [N-1:0]decval;
 assign decval[0] = 1;
+
+complementoa2 dec(decval,compdec);
+
 generate
 for(i=0;i<N; i=i+1)
     begin
-    complementoa2 dec(decval[i],compdec[i]);
     sumador menos1(
     .A(mux1[i]),
     .B(compdec[i]),
@@ -234,9 +239,10 @@ always@(*)
     if(select==1)
       begin
         result <= resres;  
-        overflow <= cores;
-        cout <= cores;
-        negativo <= 1;
+        if (cores == 0)
+                negativo <= 1;
+                else
+                negativo <= 0;
         if(resres == 0)
             zero <= 1 ;
         else
@@ -264,9 +270,10 @@ always@(*)
     if(select==3)
       begin
         result <= decres;  
-        overflow <= decCo;
-        cout <= decCo;
+        if (decCo == 0)
         negativo <= 1;
+        else
+        negativo <= 0;
         if (decres == 0)
             zero <= 1;
         else
