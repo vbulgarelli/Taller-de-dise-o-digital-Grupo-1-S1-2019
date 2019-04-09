@@ -1,0 +1,313 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Apr  8 19:40:54 2019
+# Process ID: 8244
+# Current directory: C:/Users/Daniel/Desktop/Alu/AluModularComp
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13576 C:\Users\Daniel\Desktop\Alu\AluModularComp\AluModularComp.xpr
+# Log file: C:/Users/Daniel/Desktop/Alu/AluModularComp/vivado.log
+# Journal file: C:/Users/Daniel/Desktop/Alu/AluModularComp\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.xpr
+update_compile_order -fileset sources_1
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+open_run impl_1
+place_ports {A[2]} P4
+place_ports {A[1]} P3
+place_ports {A[0]} R3
+place_ports {B[2]} T1
+place_ports {B[1]} T3
+place_ports {B[0]} V2
+place_ports {select[3]} R6
+place_ports {select[2]} R7
+place_ports {select[1]} U8
+place_ports {select[0]} U9
+place_ports flagin R5
+place_ports {resultado[2]} P2
+place_ports {resultado[1]} R2
+place_ports {resultado[0]} U1
+place_ports ocout T6
+place_ports ooverflow R8
+place_ports opnegativo V9
+place_ports ozero T8
+file mkdir C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new
+close [ open C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc w ]
+add_files -fileset constrs_1 C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc
+set_property target_constrs_file C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+open_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {A[2]} {A[1]} {A[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {B[2]} {B[1]} {B[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {resultado[2]} {resultado[1]} {resultado[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {select[3]} {select[2]} {select[1]} {select[0]}]]
+save_constraints
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+set_property IOSTANDARD LVCMOS33 [get_ports [list {A[2]} {A[1]} {A[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list flagin]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ocout]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ooverflow]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list opnegativo]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ozero]]
+save_constraints -force
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+open_run synth_1 -name synth_1
+place_ports {B[0]} U2
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+current_design impl_1
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[2]}]]
+place_ports ocout P2
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[1]}]]
+place_ports {resultado[2]} R2
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[0]}]]
+place_ports {resultado[1]} U1
+endgroup
+place_ports {resultado[0]} P5
+save_constraints -force
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+place_ports {B[0]} U2
+save_constraints -force
+save_constraints -force
+refresh_design
+place_ports {B[0]} U2
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw
+close_design
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+disconnect_hw_server localhost:3121
+connect_hw_server
+disconnect_hw_server localhost:3121
+connect_hw_server
+disconnect_hw_server localhost:3121
+connect_hw_server
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_hw
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_hw
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+disconnect_hw_server localhost:3121
+connect_hw_server
+open_hw_target
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+wait_on_run synth_1
+close_hw
+launch_runs impl_1 -jobs 2
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+wait_on_run impl_1
+open_hw
+connect_hw_server
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+close_hw

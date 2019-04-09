@@ -1,0 +1,666 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Apr  8 19:40:54 2019
+# Process ID: 8244
+# Current directory: C:/Users/Daniel/Desktop/Alu/AluModularComp
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent13576 C:\Users\Daniel\Desktop\Alu\AluModularComp\AluModularComp.xpr
+# Log file: C:/Users/Daniel/Desktop/Alu/AluModularComp/vivado.log
+# Journal file: C:/Users/Daniel/Desktop/Alu/AluModularComp\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:17 ; elapsed = 00:00:09 . Memory (MB): peak = 776.965 ; gain = 116.957
+update_compile_order -fileset sources_1
+reset_run impl_1
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 19:42:47 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1103.074 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1103.074 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:16 ; elapsed = 00:00:11 . Memory (MB): peak = 1192.621 ; gain = 397.090
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+place_ports {A[2]} P4
+place_ports {A[1]} P3
+place_ports {A[0]} R3
+place_ports {B[2]} T1
+place_ports {B[1]} T3
+place_ports {B[0]} V2
+place_ports {select[3]} R6
+place_ports {select[2]} R7
+place_ports {select[1]} U8
+place_ports {select[0]} U9
+place_ports flagin R5
+place_ports {resultado[2]} P2
+place_ports {resultado[1]} R2
+place_ports {resultado[0]} U1
+place_ports ocout T6
+place_ports ooverflow R8
+place_ports opnegativo V9
+place_ports ozero T8
+file mkdir C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new
+close [ open C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc w ]
+add_files -fileset constrs_1 C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc
+set_property target_constrs_file C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc [current_fileset -constrset]
+save_constraints -force
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Apr  8 19:59:15 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+[Mon Apr  8 19:59:16 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 20:02:14 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 20:03:24 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1714.551 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1714.551 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+set_property IOSTANDARD LVCMOS33 [get_ports [list {A[2]} {A[1]} {A[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {B[2]} {B[1]} {B[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {resultado[2]} {resultado[1]} {resultado[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list {select[3]} {select[2]} {select[1]} {select[0]}]]
+save_constraints
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [Vivado 12-872] Run step 'Design Initialization' is out-of-date.
+[Mon Apr  8 20:07:14 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+set_property IOSTANDARD LVCMOS33 [get_ports [list {A[2]} {A[1]} {A[0]}]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list flagin]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ocout]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ooverflow]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list opnegativo]]
+set_property IOSTANDARD LVCMOS33 [get_ports [list ozero]]
+save_constraints -force
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 20:10:50 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 20:12:18 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Apr  8 20:15:30 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+connect_hw_server: Time (s): cpu = 00:00:01 ; elapsed = 00:00:05 . Memory (MB): peak = 1779.777 ; gain = 0.000
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+open_run synth_1 -name synth_1
+Design is defaulting to impl run constrset: constrs_1
+Design is defaulting to synth run part: xc7a100tcsg324-1
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc]
+Finished Parsing XDC File [C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+place_ports {B[0]} U2
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.041 . Memory (MB): peak = 2722.008 ; gain = 4.582
+[Mon Apr  8 20:24:12 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210274593089A
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+WARNING: [Labtoolstcl 44-129] No matching hw_ila_data was found.
+current_design impl_1
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[2]}]]
+place_ports ocout P2
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[1]}]]
+place_ports {resultado[2]} R2
+endgroup
+startgroup
+set_property package_pin "" [get_ports [list  {resultado[0]}]]
+place_ports {resultado[1]} U1
+endgroup
+place_ports {resultado[0]} P5
+save_constraints -force
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 21:51:30 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Mon Apr  8 21:52:44 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Mon Apr  8 21:54:36 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+place_ports {B[0]} U2
+save_constraints -force
+ERROR: [Constraints 18-4419] Constraints cannot be saved because constraint file 'C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc' was read multiple times. This can lead to in-memory constraints that differ from the constraints that result from reloading the project.
+Resolution: Reload the design (refresh_design) and read each constraint file once.
+save_constraints -force
+ERROR: [Constraints 18-4419] Constraints cannot be saved because constraint file 'C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.srcs/constrs_1/new/AluCons0.xdc' was read multiple times. This can lead to in-memory constraints that differ from the constraints that result from reloading the project.
+Resolution: Reload the design (refresh_design) and read each constraint file once.
+refresh_design
+INFO: [Netlist 29-17] Analyzing 13 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2736.648 ; gain = 0.000
+Restored from archive | CPU: 1.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2736.648 ; gain = 0.000
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+place_ports {B[0]} U2
+save_constraints
+reset_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+WARNING: [Project 1-478] Design 'synth_1' is stale and will not be used when launching 'impl_1'
+[Mon Apr  8 21:58:03 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+close_hw
+close_design
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 23:18:17 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 23:19:15 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 23:20:16 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 23:20:59 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 23:24:33 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Mon Apr  8 23:25:45 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Mon Apr  8 23:30:26 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:09:15 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:14:19 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:15:42 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 08:16:27 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 08:18:17 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:24:44 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+close_hw
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 08:25:28 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 08:26:57 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+close_hw
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:31:23 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 08:33:06 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 08:35:47 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:40:55 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+close_hw
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 08:43:15 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 08:44:44 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 08:47:35 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 08:48:19 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 08:49:47 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Timing 38-478] Restoring timing data from binary archive.
+INFO: [Timing 38-479] Binary timing data restore complete.
+INFO: [Project 1-856] Restoring constraints from binary archive.
+INFO: [Project 1-853] Binary constraint restore complete.
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 2747.891 ; gain = 0.000
+Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 2747.891 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210274593089A
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 09:06:06 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 09:07:02 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 09:07:43 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 09:11:20 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 09:12:02 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 09:13:47 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+disconnect_hw_server localhost:3121
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+ERROR: [Labtools 27-2269] No devices detected on target localhost:3121/xilinx_tcf/Digilent/210274593089A.
+Check cable connectivity and that the target board is powered up then
+use the disconnect_hw_server and connect_hw_server to re-register this hardware target.
+ERROR: [Common 17-39] 'open_hw_target' failed due to earlier errors.
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 09:20:15 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 09:20:58 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 09:23:34 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+reset_run synth_1
+launch_runs synth_1 -jobs 2
+[Tue Apr  9 09:26:44 2019] Launched synth_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/synth_1/runme.log
+close_hw
+launch_runs impl_1 -jobs 2
+[Tue Apr  9 09:27:54 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+launch_runs impl_1 -to_step write_bitstream -jobs 2
+[Tue Apr  9 09:30:13 2019] Launched impl_1...
+Run output will be captured here: C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/runme.log
+open_hw
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2018.2
+  **** Build date : Jun 14 2018-20:42:52
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+
+open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210274593089A
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+current_hw_device [get_hw_devices xc7a100t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+set_property PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7a100t_0]
+set_property PROGRAM.FILE {C:/Users/Daniel/Desktop/Alu/AluModularComp/AluModularComp.runs/impl_1/ALUU.bit} [get_hw_devices xc7a100t_0]
+program_hw_devices [get_hw_devices xc7a100t_0]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices xc7a100t_0] 0]
+INFO: [Labtools 27-1434] Device xc7a100t (JTAG device index = 0) is programmed with a design that has no supported debug core(s) in it.
+WARNING: [Labtools 27-3361] The debug hub core was not detected.
+Resolution: 
+1. Make sure the clock connected to the debug hub (dbg_hub) core is a free running clock and is active.
+2. Make sure the BSCAN_SWITCH_USER_MASK device property in Vivado Hardware Manager reflects the user scan chain setting in the design and refresh the device.  To determine the user scan chain setting in the design, open the implemented design and use 'get_property C_USER_SCAN_CHAIN [get_debug_cores dbg_hub]'.
+For more details on setting the scan chain property, consult the Vivado Debug and Programming User Guide (UG908).
+ERROR: [Labtoolstcl 44-513] HW Target shutdown. Closing target: localhost:3121/xilinx_tcf/Digilent/210274593089A
+close_hw
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue Apr  9 11:43:22 2019...
