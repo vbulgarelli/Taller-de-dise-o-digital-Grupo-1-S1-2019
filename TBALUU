@@ -1,0 +1,68 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+module TBALUU;
+    reg [3:0] A;
+    reg [3:0] B;
+    reg [0:0] flagin;
+    reg [3:0] select;
+    wire [3:0] resultado;
+    wire negativo;
+    wire zero;
+    wire cout;
+    wire overflow;
+    integer i;
+    
+    ALUU uut(
+        A,
+        B,
+        flagin,
+        select,
+        resultado,
+        negativo,
+        zero,
+        cout,
+        overflow
+        
+    );
+    
+    initial begin
+    A= 4'b0111;  
+    B= 4'b0001;
+    flagin= 1'b1;
+    for(i = 0;i < 16;i = i+1)
+        begin
+            select = i;
+            #10;
+        end
+        
+    A= 4'b0101;  
+    B= 4'b0010;
+    flagin= 1'b0;
+    for(i = 0;i < 16;i = i+1)
+        begin
+            select = i;
+            #10;
+        end
+        
+    A= 4'b1011;  
+    B= 4'b0101;
+    flagin= 1'b0;
+    for(i = 0;i < 16;i = i+1)
+        begin
+            select = i;
+            #10;
+        end   
+        
+    A= 4'b0011;  
+    B= 4'b1010;
+    flagin= 1'b1;
+    for(i = 0;i < 16;i = i+1)
+        begin
+            select = i;
+            #10;
+        end 
+;
+    
+   end
+       
+endmodule
