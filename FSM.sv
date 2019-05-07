@@ -2,8 +2,6 @@
 
 
 module FSM(
-    
-    input logic [1:0] conext,
     input logic clk,
     input manclk,
     input mode,
@@ -17,20 +15,15 @@ module FSM(
     output reg [31:0] val,
     output reg [3:0] leds
     );
-    
-    reg K=0;
-    reg clkout;
     wire clkdiv;
-    reg [31:0] n0 =32'd0, n1 =32'd0;
-    reg [22:0] a=23'd0;///////////////////////////////////////
-    reg [22:0] b=23'd0;
-    reg [7:0] exA=8'd0;
-    reg [7:0] exB=8'd0;
-    reg signA, signB;//////////////////////////////////
-    reg [23:0] sumres = 23'd0;
-    reg [22:0] shiftManA = 22'd0;
-    reg [22:0] shiftManB = 22'd0;
+    reg clkout;
+    reg [31:0] n0, n1;
+    reg [22:0] a, b;
+    reg [7:0] ex0, ex1;
+    reg signA, signB;
+    reg [22:0] shiftManA, shiftManB;
     reg [7:0] shiftmax = 8'd0;
+    reg [23:0] sumres;
     reg [1:0] cont = 2'b00;
    
     Clock_divider(clk,clkdiv);
@@ -46,54 +39,63 @@ module FSM(
     always@(posedge save)
     begin
     if(datawork==1 && selnum==0)
+    begin
         n0<=n0+datain*2**(8*seldata);
+    end
     else if (datawork==1&&selnum==1)
+    begin
         n1<=n1+datain*2**(8*seldata);
-    else;
-    a <= n0 && 32'b00000000011111111111111111111111;///////////////////////////////////////
-    b <= n1 && 32'b00000000011111111111111111111111;
-  exA <= (n0[30:23] && 8'b011111111);
-  exB <= (n1[30:23] && 8'b011111111);
-signA <= (n0[31] && 1'b1);
-signB <= (n1[31] && 1'b1);
+    end  
+    {signB,ex1,b} <= n1;
+    {signA,ex0,a} <= n0;  
     end
     
-    always @(posedge clkout && !datawork)
+    always @(posedge clkout && datawork==0)
         begin
             case (cont)
                
+                
                 2'b00:
                 
                     begin
                     leds <= 4'b0001;
-                    if(exA > exB)
+                    if(ex0 > ex1)
                     begin
-                    shiftmax <= (exA-8'b01111111);
+                    shiftmax <= (ex0-8'd127);
                     end
-                    else if(exA == exB)
+                    else if(ex0 == ex1)
                     begin
-                    shiftmax <= (exA-8'b01111111);
+                    shiftmax <= 0;
                     end
-                    else if (exA < exB);
+                    else if (ex0 < ex1);
                     begin
-                    shiftmax <= (exB-8'b01111111);
-                    end
-                    shiftManA <= (a >> (8'd23-shiftmax));
-                    shiftManB <= (b >> (8'd23-shiftmax));
+                    shiftmax <= (ex1-8'd127);
                     end
                     
-                2'b01 :
+                    shiftManA <= (a >> (shiftmax));
+                    shiftManB <= (b >> (shiftmax));
+                    end    
+                2'b01:
                 begin
                 leds <= 4'b0010;
-                sumres <= (1-opSel)*(shiftManA + shiftManB) + (shiftManA - shiftManB)*opSel;
+                if (opSel == 0)
+                begin
+                 sumres <= (shiftManA + shiftManB);
                 end
-                2'b10 :
+                
+                else if(opSel == 1)
+                begin
+                 sumres <= (shiftManA - shiftManB);
+                end
+                
+                end
+                2'b10:
                     begin
                     leds <= 4'b0100;
                     val <={sumres, shiftmax};
                     end
-               2'b11:
-                    ;
+                2'b11:
+                     ;
                     
                default:;
                
