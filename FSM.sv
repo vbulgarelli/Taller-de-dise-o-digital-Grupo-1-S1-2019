@@ -19,7 +19,7 @@ module FSM(
     reg clkout;
     reg [31:0] n0, n1;
     reg [22:0] a, b;
-    reg [7:0] ex0, ex1;
+    reg [7:0] expA, expB;
     reg signA, signB;
     reg [22:0] shiftManA, shiftManB;
     reg [7:0] shiftmax = 8'd0;
@@ -40,14 +40,15 @@ module FSM(
     begin
     if(datawork==1 && selnum==0)
     begin
-        n0<=n0+datain*2**(8*seldata);
+        n0<=n0 + datain*(2**(8*seldata));
     end
     else if (datawork==1&&selnum==1)
     begin
-        n1<=n1+datain*2**(8*seldata);
+        n1<=n1 + datain*(2**(8*seldata));
     end  
-    {signB,ex1,b} <= n1;
-    {signA,ex0,a} <= n0;  
+    
+    {signB,expB,b} <= n1;
+    {signA,expA,a} <= n0;  
     end
     
     always @(posedge clkout && datawork==0)
@@ -59,19 +60,19 @@ module FSM(
                 
                     begin
                     leds <= 4'b0001;
-                    if(ex0 > ex1)
-                    begin
-                    shiftmax <= (ex0-8'd127);
-                    end
-                    else if(ex0 == ex1)
-                    begin
-                    shiftmax <= 0;
-                    end
-                    else if (ex0 < ex1);
-                    begin
-                    shiftmax <= (ex1-8'd127);
-                    end
                     
+                    if(expA > expB)
+                    begin
+                        shiftmax <= (expA-127);
+                    end
+                    else if(expA == expB)
+                    begin
+                        shiftmax <= 0;
+                    end
+                    else if (expA < expB);
+                    begin
+                        shiftmax <= (expB-127);
+                    end
                     shiftManA <= (a >> (shiftmax));
                     shiftManB <= (b >> (shiftmax));
                     end    
