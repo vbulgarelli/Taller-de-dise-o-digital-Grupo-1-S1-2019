@@ -21,9 +21,9 @@
 
 
 module Squareanimation(
-    input wire CLK,             // board clock: 100 MHz on Arty/Basys3/Nexys
+    input logic CLK,             // board clock: 100 MHz on Arty/Basys3/Nexys
+    input logic boton,
     input wire RST_BTN,         // reset button
-    input boton,                // boton "clock"
     output wire VGA_HS_O,       // horizontal sync output
     output wire VGA_VS_O,       // vertical sync output
     output wire [3:0] VGA_R,    // 4-bit VGA red output
@@ -35,17 +35,19 @@ wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
     // wire rst = RST_BTN;  // reset is active high on Basys3 (BTNC)
 
     // generate a 25 MHz pixel strobe
-    reg [15:0] cnt;
+    reg [23:0] cnt = 24'h000000;
     reg pix_stb;
-    always @(posedge CLK)
-        {pix_stb, cnt} <= cnt + 16'h4000;  // divide by 4: (2^16)/4 = 0x4000
-
+    
+    always @(posedge CLK) begin
+   
+    {pix_stb, cnt} <= cnt + {4'h4,20'b00000};
+    end
+   
     wire [9:0] x;  // current pixel x position: 10-bit value: 0-1023
     wire [8:0] y;  // current pixel y position:  9-bit value: 0-511
     
-    reg [3:0] red; //para poder cambiar los valores en un case
-    reg [3:0]green;
-    reg [3:0] blue;
+   
+    
     
     vga display (
         .i_clk(CLK),
@@ -54,66 +56,68 @@ wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
         .o_hs(VGA_HS_O), 
         .o_vs(VGA_VS_O), 
         .o_x(x), 
-        .o_y(y)
-    );
-    
-    reg [1:0]cont; //contador que vamos a usar para determinar cuando se pinta un cuadro, cambia al pulsar un boton
-    
-    
+        .o_y(y));
+
     // asigna las coordenadas de los cuadrados
     wire sq_a, sq_b, sq_c, sq_d;
-    assign sq_a = ((x > 0) & (y >  0) & (x < 320) & (y < 240)) ? 1 : 0;
-    assign sq_b = ((x > 321) & (y > 0) & (x < 640) & (y < 240))& (cont==1) ? 1 : 0;
-    assign sq_c = ((x > 0) & (y > 241) & (x < 320) & (y < 480)) & (cont==2)  ? 1 : 0;
-    assign sq_d = ((x > 321) & (y > 241) & (x < 640) & (y < 480)) & (cont==3) ? 1 : 0;
+    assign sq_a = ((x > 0) & (y > 0) & (x < 320) & (y < 240)) ? 1 : 0;
+    assign sq_b = ((x > 320) & (y > 0) & (x < 640) & (y < 240)) ? 1 : 0;
+    assign sq_c = ((x > 0) & (y > 240) & (x < 320) & (y < 480)) ? 1 : 0;
+    assign sq_d = ((x > 320) & (y > 240) & (x < 640) & (y < 480)) ? 1 : 0;
 
-    reg a,b,c,d;
 
-//    assign VGA_R[3] = sq_b;         // square b is red
-//    assign VGA_G[3] = sq_a | sq_d;  // squares a and d are green
-//    assign VGA_B[3] = sq_c;         // square c is blue
-    
-    
-    reg [11:0] random;
-    
-    always@(posedge boton)
-    begin
-        cont <= cont + 1;
-    end
-    // falta crear otro divisor de clock para el pintado automático
-    
-  always @* //por ahora pone colores fijos como prueba
-  begin  
-    case(cont)
-         0: red =random[11:8]; 
-         0: green =random[7:4]; 
-         0: blue =random[3:0]; 
-         0: random = random + 3;
-         1: red =random[11:8]; 
-         1: green =random[7:4]; 
-         1: blue =random[3:0]; 
-         1: random = random +1;
-         2: red =random[11:8]; 
-         2: green =random[7:4]; 
-         2: blue =random[3:0]; 
-         2: random = random + 7;
-         3: red =random[11:8]; 
-         3: green =random[7:4]; 
-         3: blue =random[3:0]; 
-         3: random = random + 2;
+   reg [1:0] cont = 2'b00; 
+   reg [11:0] ran;  
+  
+  
+  lfsr random(.out(ran),.clk(CLK),.rst(rst));
+  
+  reg [11:0] colora = 12'b0;
+  reg [11:0] colorb = 12'b0;
+  reg [11:0] colorc = 12'b0;
+  reg [11:0] colord = 12'b0;
+  
+  //always@(posedge CLK)
+  
+ reg boton_old;
+ 
+   always@(posedge CLK)
+   begin
+ 
+        if (boton_old == 0 && boton == 1)
+        begin
+          if(cont == 3)
+          begin
+          cont <= 2'b00;
+          end
+          else
+          cont <= cont + 2'b01;
          
-    endcase
-   end  
+            case(cont)
+            0:colora <= ran[11:0]; 
+            1:colorb <= ran[11:0];
+            2:colorc <= ran[11:0];
+            3:colord <= ran[11:0];
+            endcase
+        end
+   boton_old  <= boton;
+   end
+ 
    
+  
    // se pasa el valor de los registros a los cables de RGB
-   assign VGA_R = red;
-   assign VGA_G = green;
-   assign VGA_B = blue;
-   
-   // se encienden los cables en las coordenadas del cuadro a
-   assign VGA_R = sq_a | sq_b;
-   assign VGA_G = sq_a | sq_c;
-   assign VGA_B = sq_b | sq_c;
-   
-       
+ 
+assign VGA_R = {(sq_a & colora[0]) | (sq_b & colorb[0]) | (sq_c & colorc[0]) | (sq_d & colord[0]),
+                (sq_a & colora[1]) | (sq_b & colorb[1]) | (sq_c & colorc[1]) | (sq_d & colord[1]),
+                (sq_a & colora[2]) | (sq_b & colorb[2]) | (sq_c & colorc[2]) | (sq_d & colord[2]),
+                (sq_a & colora[3]) | (sq_b & colorb[3]) | (sq_c & colorc[3]) | (sq_d & colord[3])};
+assign VGA_G = {(sq_a & colora[4]) | (sq_b & colorb[4]) | (sq_c & colorc[4]) | (sq_d & colord[4]),
+                (sq_a & colora[5]) | (sq_b & colorb[5]) | (sq_c & colorc[5]) | (sq_d & colord[5]),
+                (sq_a & colora[6]) | (sq_b & colorb[6]) | (sq_c & colorc[6]) | (sq_d & colord[6]),
+                (sq_a & colora[7]) | (sq_b & colorb[7]) | (sq_c & colorc[7]) | (sq_d & colord[7])};
+assign VGA_B = {(sq_a & colora[8]) | (sq_b & colorb[8]) | (sq_c & colorc[8]) | (sq_d & colord[8]),
+                (sq_a & colora[9]) | (sq_b & colorb[9]) | (sq_c & colorc[9]) | (sq_d & colord[9]),
+                (sq_a & colora[10]) | (sq_b & colorb[10]) | (sq_c & colorc[10]) | (sq_d & colord[10]),
+                (sq_a & colora[11]) | (sq_b & colorb[11]) | (sq_c & colorc[11]) | (sq_d & colord[11])};
+  
 endmodule
