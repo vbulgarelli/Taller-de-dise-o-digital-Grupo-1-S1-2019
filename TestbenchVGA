@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+
+module testbench;
+   reg CLK;             // board clock: 100 MHz on Arty/Basys3/Nexys
+   reg boton;
+   reg rts;
+   wire VGA_HS_O;       // horizontal sync output
+   wire VGA_VS_O;       // vertical sync output
+   wire [3:0] VGA_R;    // 4-bit VGA red output
+   wire [3:0] VGA_G;    // 4-bit VGA green output
+   wire [3:0] VGA_B;    // 4-bit VGA blue outputt
+ 
+ Squareanimation uut (CLK,boton,rts,VGA_HS_O,VGA_VS_O,VGA_R,VGA_G,VGA_B); 
+//Squareanimation uut(
+//    .CLK(CLK),
+//    .boton(boton),
+//    .rts(rts),
+//    .VGA_HS_O(VGA_HS_O),
+//    .VGA_VS_O(VGA_VS_O),
+//    .VGA_R(VGA_R),
+//    .VGA_G(VGA_G),
+//    .VGA_B(VGA_B),
+//    );
+  
+ integer k=0;
+ integer i=0;
+ initial
+ begin
+    for (i=0; i<100; i=i+1) 
+    begin
+     rts=1;
+     if (k==0)
+     begin
+        CLK=1;
+        #10
+        k=1;
+ 
+     end
+     
+     if (k==1)
+     begin
+        CLK=0;
+        #10
+        k=0;
+     end
+     
+     end
+
+end        
+endmodule
+
