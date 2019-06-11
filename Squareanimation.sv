@@ -45,9 +45,7 @@ wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
    
     wire [9:0] x;  // current pixel x position: 10-bit value: 0-1023
     wire [8:0] y;  // current pixel y position:  9-bit value: 0-511
-    
-   
-    
+ 
     
     vga display (
         .i_clk(CLK),
@@ -66,8 +64,38 @@ wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
     assign sq_d = ((x > 320) & (y > 240) & (x < 640) & (y < 480)) ? 1 : 0;
 
 
-   reg [1:0] cont = 2'b00; 
-   reg [11:0] ran;  
+    reg [1:0] cont = 2'b00; 
+    reg [11:0] ran;  
+    wire [7:0] address;
+    wire [5:0] dataout;
+    wire spr;
+    
+    
+    reg [11:0] palette [0:63];  // 64 x 12-bit colour palette entries
+    
+        initial begin
+            $display("Loading palette.");
+            $readmemh("sprit_palette.mem", palette);  // bitmap palette to load
+        end
+
+      
+    sram #(
+            .ADDR_WIDTH(8), 
+            .DATA_WIDTH(6), 
+            .DEPTH(256), 
+            .MEMFILE("sprit.mem"))  // bitmap to load
+            vram (
+            .i_addr(address), 
+            .i_clk(CLK), 
+            .i_write(0),  // we're always reading
+            .i_data(0), 
+            .o_data(dataout)
+        );
+        
+        
+        
+        assign spr = ( (x >= (152 + 320*(cont[0])) ) & (y >= (112 + 240*(cont[1])) ) & (x <= (168+ 320*(cont[0])) ) & (y <= (128 + 240*(cont[1]))))? 1 : 0;
+        assign address = (x-(152 + 320*(cont[0]))) + 16*(y-(112 + 240*(cont[1])));
   
   
   lfsr random(.out(ran),.clk(CLK),.rst(rst));
@@ -83,41 +111,50 @@ wire rst = ~RST_BTN;    // reset is active low on Arty & Nexys Video
  
    always@(posedge CLK)
    begin
- 
-        if (boton_old == 0 && boton == 1)
-        begin
-          if(cont == 3)
-          begin
-          cont <= 2'b00;
-          end
-          else
-          cont <= cont + 2'b01;
+
+   if (boton_old == 0 && boton == 1)
+   begin
+        if(cont == 3)
+        cont <= 2'b00;
+        else
+        cont <= cont + 2'b01;
          
             case(cont)
-            0:colora <= ran[11:0]; 
-            1:colorb <= ran[11:0];
-            2:colorc <= ran[11:0];
-            3:colord <= ran[11:0];
+            0:
+            colora <= ran[11:0];
+           
+            1:
+            colorb <= ran[11:0];
+       
+            2:
+            colorc <= ran[11:0];
+            
+            3:
+            colord <= ran[11:0];
+            
             endcase
         end
+
    boton_old  <= boton;
+
+   
    end
- 
+   
    
   
    // se pasa el valor de los registros a los cables de RGB
  
-assign VGA_R = {(sq_a & colora[0]) | (sq_b & colorb[0]) | (sq_c & colorc[0]) | (sq_d & colord[0]),
+assign VGA_R = ({(sq_a & colora[0]) | (sq_b & colorb[0]) | (sq_c & colorc[0]) | (sq_d & colord[0]),
                 (sq_a & colora[1]) | (sq_b & colorb[1]) | (sq_c & colorc[1]) | (sq_d & colord[1]),
                 (sq_a & colora[2]) | (sq_b & colorb[2]) | (sq_c & colorc[2]) | (sq_d & colord[2]),
-                (sq_a & colora[3]) | (sq_b & colorb[3]) | (sq_c & colorc[3]) | (sq_d & colord[3])};
-assign VGA_G = {(sq_a & colora[4]) | (sq_b & colorb[4]) | (sq_c & colorc[4]) | (sq_d & colord[4]),
+                (sq_a & colora[3]) | (sq_b & colorb[3]) | (sq_c & colorc[3]) | (sq_d & colord[3])} *(1-spr)) | (spr * palette[dataout][11:8]);
+assign VGA_G = ({(sq_a & colora[4]) | (sq_b & colorb[4]) | (sq_c & colorc[4]) | (sq_d & colord[4]),
                 (sq_a & colora[5]) | (sq_b & colorb[5]) | (sq_c & colorc[5]) | (sq_d & colord[5]),
                 (sq_a & colora[6]) | (sq_b & colorb[6]) | (sq_c & colorc[6]) | (sq_d & colord[6]),
-                (sq_a & colora[7]) | (sq_b & colorb[7]) | (sq_c & colorc[7]) | (sq_d & colord[7])};
-assign VGA_B = {(sq_a & colora[8]) | (sq_b & colorb[8]) | (sq_c & colorc[8]) | (sq_d & colord[8]),
+                (sq_a & colora[7]) | (sq_b & colorb[7]) | (sq_c & colorc[7]) | (sq_d & colord[7])} * (1-spr)) | (spr * palette[dataout][7:4]);
+assign VGA_B = ({(sq_a & colora[8]) | (sq_b & colorb[8]) | (sq_c & colorc[8]) | (sq_d & colord[8]),
                 (sq_a & colora[9]) | (sq_b & colorb[9]) | (sq_c & colorc[9]) | (sq_d & colord[9]),
                 (sq_a & colora[10]) | (sq_b & colorb[10]) | (sq_c & colorc[10]) | (sq_d & colord[10]),
-                (sq_a & colora[11]) | (sq_b & colorb[11]) | (sq_c & colorc[11]) | (sq_d & colord[11])};
+                (sq_a & colora[11]) | (sq_b & colorb[11]) | (sq_c & colorc[11]) | (sq_d & colord[11])} *(1-spr)) |(spr * palette[dataout][3:0]);
   
 endmodule
